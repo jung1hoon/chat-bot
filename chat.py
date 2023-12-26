@@ -1,10 +1,13 @@
 
-from openai import OpenAI
-client = OpenAI(
-    api_key= ""
-)
+import openai
+from dotenv import load_dotenv
+import os 
 
-completion = client.chat.completions.create(
+load_dotenv()
+openai.api_key = os.getenv('OPEN_API_KEY')
+
+
+completion = openai.chat.completions.create(
   model="gpt-3.5-turbo",
   messages=[
     {"role": "system", "content": "You are a helpful assistant."},
